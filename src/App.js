@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import PeepInputField from './components/PeepInputField';
+import PeepInputForm from './components/PeepInputForm';
 
 
 function App() {
   return (
-    <PeepInputField />
+    <PeepInputForm />
   );
 }
 
