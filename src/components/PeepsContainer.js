@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from 'react'
+import Peep from './Peep'
 
-const PeepsContainer = () => {
-  const [peeps, setPeeps] = useState([])
-
-  const fetchPeeps = async () => {
-    console.log('fetching')
-  }
+const PeepsContainer = ({ peeps }) => {
 
   useEffect(() => {
-    peeps = fetchPeeps()
-    setPeeps(peeps)
+  
   }, [])
 
   return (
     <div>
-      
+      {peeps.map((peep) => (
+        <Peep content={peep.content} />
+      ))}
     </div>
   )
 }

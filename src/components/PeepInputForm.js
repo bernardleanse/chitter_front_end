@@ -1,27 +1,21 @@
 import React, { useState } from 'react'
 
-const PeepInputForm = () => {
-  const [peepContent, setPeepContent] = useState('')
+const PeepInputForm = ({ onSubmittingPeep }) => {
+  const [content, setContent] = useState('')
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    
-    const res = fetch('http://localhost:3001/peeps', {
-      headers: { 'content-type': 'application/json' },
-      method: "POST",
-      body: JSON.stringify({ content: peepContent })
-    })
 
-    console.log(res)
+    onSubmittingPeep({ content })
     
-    setPeepContent('')
+    setContent('')
   }
 
   return (
     <form onSubmit={handleSubmit} className="input-form">
       <label>
         What's happening?
-        <input type="text" value={peepContent} onChange={e => setPeepContent(e.target.value)} />
+        <input type="text" value={content} onChange={e => setContent(e.target.value)} />
       </label>
       <input type="submit" value="Submit" />
     </form>
