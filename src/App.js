@@ -2,12 +2,16 @@ import logo from './logo.svg';
 import './App.css';
 import PeepInputForm from './components/PeepInputForm';
 import PeepsContainer from './components/PeepsContainer'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 
 
 function App() {
+
+  useEffect(() => {
+    fetchAllPeeps(setPeeps)
+  }, [])
 
   const [peeps, setPeeps] = useState([])
 
@@ -21,6 +25,12 @@ function App() {
 
     setPeeps([...peeps, peep])
     
+  }
+
+  const fetchAllPeeps = async (callback) => {
+    const res = await fetch('http://localhost:3001/peeps')
+    const data = await res.json()
+    callback(data)
   }
 
 
