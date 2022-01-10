@@ -2,7 +2,7 @@ import React from 'react'
 
 const Peep = ({ content }) => {
   return (
-    <div>
+    <div className="peep">
       {content}
     </div>
   )

@@ -2,6 +2,24 @@
   text-align: center;
 }
 
+.peeps-container {
+  text-align: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px
+  
+}
+
+.peep {
+  padding: 20px;
+  text-align: center;
+  max-width: 200px;
+  border-radius: 5px;
+  border-color: black;
+  border-style: solid;
+  margin: 10px 0px 10px 0px;
+}
+
 .input-form{
   text-align: center;
   padding-top: 2em;
