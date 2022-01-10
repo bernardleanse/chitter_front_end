@@ -10,7 +10,17 @@
   
 }
 
+.close {
+  position: absolute;  
+  right: 10px;
+  top: 10px;
+  height: auto;
+  width: auto;
+  max-height: 10px;
+}
+
 .peep {
+  position: relative;
   width: auto;
   padding: 20px;
   text-align: center;
