@@ -23,14 +23,15 @@ function App() {
         body: JSON.stringify(peep)
       })
 
-    setPeeps([...peeps, peep])
+    setPeeps([peep, ...peeps])
     
   }
 
   const fetchAllPeeps = async (callback) => {
     const res = await fetch('http://localhost:3001/peeps')
     const data = await res.json()
-    callback(data)
+    console.log(data)
+    callback(data.reverse())
   }
 
 

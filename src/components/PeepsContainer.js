@@ -10,7 +10,7 @@ const PeepsContainer = ({ peeps }) => {
   return (
     <div className="peeps-container">
       {peeps.map((peep) => (
-        <Peep content={peep.content} />
+        <Peep content={peep.content} key={peep.id} />
       ))}
     </div>
   )
