@@ -34,11 +34,17 @@ function App() {
     callback(data.reverse())
   }
 
+  const handleDeletePeep = (id) => {
+    console.log('clicked')
+    const newPeeps = peeps.filter((peep) => peep.id !== id)
+    setPeeps(newPeeps)
+  }
+
 
   return (
     <div className="App">
       <PeepInputForm onSubmittingPeep={onSubmittingPeep}/>
-      <PeepsContainer peeps={peeps}/>
+      <PeepsContainer handleClose={handleDeletePeep} peeps={peeps}/>
     </div>
   );
 }

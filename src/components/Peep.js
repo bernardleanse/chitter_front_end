@@ -1,9 +1,12 @@
 import React from 'react'
+import ClosePeep from './ClosePeep'
 
-const Peep = ({ content }) => {
+
+const Peep = ({ content, handleClose, id }) => {
+  
   return (
     <div className="peep">
-      <img src="https://www.clipartmax.com/png/full/43-434897_thin-close-icon-png.png" className="close"/>
+      <ClosePeep id={id} handleClose={handleClose} />
       {content}
     </div>
   )

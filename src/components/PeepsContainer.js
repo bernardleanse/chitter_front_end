@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Peep from './Peep'
 
-const PeepsContainer = ({ peeps }) => {
+const PeepsContainer = ({ peeps, handleClose }) => {
 
   useEffect(() => {
   
@@ -10,7 +10,7 @@ const PeepsContainer = ({ peeps }) => {
   return (
     <div className="peeps-container">
       {peeps.map((peep) => (
-        <Peep content={peep.content} key={peep.id} />
+        <Peep handleClose={handleClose} content={peep.content} key={peep.id} id={peep.id} />
       ))}
     </div>
   )
