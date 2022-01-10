@@ -17,7 +17,10 @@
   height: auto;
   width: auto;
   max-height: 10px;
+  cursor: pointer;
 }
+
+
 
 .peep {
   position: relative;
