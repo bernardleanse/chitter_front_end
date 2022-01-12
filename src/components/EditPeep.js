@@ -1,8 +1,8 @@
 import React from 'react'
 
-const EditPeep = () => {
+const EditPeep = ({ toggle }) => {
   return (
-    <button className="edit-button">
+    <button className="edit-button" onClick={toggle} >
       Edit
     </button>
   )

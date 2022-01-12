@@ -22,9 +22,14 @@ function App() {
         method: "POST",
         body: JSON.stringify(peep)
       })
+    
 
     setPeeps([peep, ...peeps])
     
+  }
+
+  const onSubmittingEdit = async (newContent) => {
+    console.log('edit function called')
   }
 
   const fetchAllPeeps = async (callback) => {
@@ -52,7 +57,7 @@ function App() {
   return (
     <div className="App">
       <PeepInputForm onSubmittingPeep={onSubmittingPeep}/>
-      <PeepsContainer handleClose={handleDeletePeep} peeps={peeps}/>
+      <PeepsContainer handleClose={handleDeletePeep} peeps={peeps} onSubmittingEdit={onSubmittingEdit} />
     </div>
   );
 }

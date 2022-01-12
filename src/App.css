@@ -20,6 +20,11 @@
   cursor: pointer;
 }
 
+.edit-text-box {
+  position: absolute;
+  bottom: 10px;
+  right: 65px;
+}
 
 
 .peep {
