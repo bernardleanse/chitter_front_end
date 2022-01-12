@@ -1,5 +1,7 @@
 import React from 'react'
 import ClosePeep from './ClosePeep'
+import EditPeep from './EditPeep'
+
 
 
 const Peep = ({ content, handleClose, id }) => {
@@ -8,6 +10,7 @@ const Peep = ({ content, handleClose, id }) => {
     <div className="peep">
       <ClosePeep id={id} handleClose={handleClose} />
       {content}
+      <EditPeep />
     </div>
   )
 }
