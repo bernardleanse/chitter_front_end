@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 
-const EditTextBox = ({ onSubmittingEdit }) => {
+const EditTextBox = ({ id, onSubmittingEdit }) => {
 
   const [content, setContent] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    onSubmittingEdit({content})
+    onSubmittingEdit({id, content})
 
     setContent('')
   }

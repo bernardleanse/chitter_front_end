@@ -29,7 +29,13 @@ function App() {
   }
 
   const onSubmittingEdit = async (newContent) => {
-    console.log('edit function called')
+    fetch(`http://localhost:3001/peep`, {
+      headers: { 'content-type': 'application/json' },
+      method: "PATCH",
+      body: JSON.stringify(newContent)
+    })
+    .then((data) => {fetchAllPeeps(setPeeps)})
+    
   }
 
   const fetchAllPeeps = async (callback) => {
@@ -43,14 +49,16 @@ function App() {
     const res = await fetch(`http://localhost:3001/peep/${id}`, {
       method: "DELETE"
     })
+    console.log(res)
   }
 
 
   const handleDeletePeep = (id) => {
     console.log('clicked')
+    requestBackendDelete(id)
     const newPeeps = peeps.filter((peep) => peep.id !== id)
     setPeeps(newPeeps)
-    requestBackendDelete(id)
+    
   }
 
 

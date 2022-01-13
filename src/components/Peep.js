@@ -16,7 +16,7 @@ const Peep = ({ content, handleClose, id, onSubmittingEdit }) => {
       <ClosePeep id={id} handleClose={handleClose} />
       {content}
       <EditPeep toggle={toggleEditBox} />
-      {showEditBox && <EditTextBox onSubmittingEdit={onSubmittingEdit}/>}
+      {showEditBox && <EditTextBox onSubmittingEdit={onSubmittingEdit} id={id}/>}
     </div>
   )
 }
