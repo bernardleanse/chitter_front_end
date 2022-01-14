@@ -1,11 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-import PeepInputForm from './components/PeepInputForm';
-import PeepsContainer from './components/PeepsContainer'
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import { useEffect, useState } from 'react';
-
-
-
+import Profile from './components/Profile';
+import MainPage from './MainPage';
 
 function App() {
 
@@ -17,14 +16,14 @@ function App() {
 
   const onSubmittingPeep = async (peep) => {
   
-    const res = await fetch('http://localhost:3001/peeps', {
+    await fetch('http://localhost:3001/peeps', {
         headers: { 'content-type': 'application/json' },
         method: "POST",
         body: JSON.stringify(peep)
       })
     
 
-    setPeeps([peep, ...peeps])
+    fetchAllPeeps(setPeeps)
     
   }
 
@@ -34,7 +33,7 @@ function App() {
       method: "PATCH",
       body: JSON.stringify(newContent)
     })
-    .then((data) => {fetchAllPeeps(setPeeps)})
+    .then(() => {fetchAllPeeps(setPeeps)})
     
   }
 
@@ -61,12 +60,15 @@ function App() {
     
   }
 
-
-  return (
-    <div className="App">
-      <PeepInputForm onSubmittingPeep={onSubmittingPeep}/>
-      <PeepsContainer handleClose={handleDeletePeep} peeps={peeps} onSubmittingEdit={onSubmittingEdit} />
-    </div>
+  return ( 
+    <BrowserRouter>
+      <div className="App"> 
+        <Routes>     
+          <Route path='/main' element={<MainPage onSubmittingPeep={onSubmittingPeep} handleDeletePeep={handleDeletePeep} peeps={peeps} onSubmittingEdit={onSubmittingEdit}/>} />
+          <Route path='/profile' element={<Profile />} />         
+        </Routes>
+      </div>    
+    </BrowserRouter>
   );
 }
 
