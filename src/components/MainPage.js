@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import PeepsContainer from './components/PeepsContainer'
-import PeepInputForm from './components/PeepInputForm';
+import PeepsContainer from './PeepsContainer'
+import PeepInputForm from './PeepInputForm';
 import { CircularProgress } from '@mui/material';
-import { LoadingContext } from './App';
+import { LoadingContext } from '../App';
 
 const MainPage = ({onSubmittingPeep, handleDeletePeep, peeps, onSubmittingEdit}) => {
   const {isLoading} = useContext(LoadingContext)

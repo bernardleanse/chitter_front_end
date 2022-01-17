@@ -2,8 +2,8 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { createContext, useContext, useEffect, useState } from 'react';
 import Profile from './components/Profile';
-import MainPage from './MainPage';
-
+import NavBar from './components/NavBar';
+import MainPage from './components/MainPage';
 export const LoadingContext = createContext()
 
 function App() {
@@ -67,6 +67,7 @@ function App() {
     <BrowserRouter>
       <div className="App"> 
         <LoadingContext.Provider value={{isLoading, setIsLoading}}>
+          <NavBar />
           <div className="wrapper">
             <Routes>            
               <Route path='/main' element={<MainPage onSubmittingPeep={onSubmittingPeep} handleDeletePeep={handleDeletePeep} peeps={peeps} onSubmittingEdit={onSubmittingEdit}/>} />
