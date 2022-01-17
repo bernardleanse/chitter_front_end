@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import ClosePeep from './ClosePeep'
 import EditPeep from './EditPeep'
 import EditTextBox from './EditTextBox'

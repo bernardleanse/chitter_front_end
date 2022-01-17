@@ -1,10 +1,10 @@
 import './App.css';
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
-import { useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import Profile from './components/Profile';
 import MainPage from './MainPage';
+
+export const LoadingContext = createContext()
 
 function App() {
 
@@ -13,26 +13,29 @@ function App() {
   }, [])
 
   const [peeps, setPeeps] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  
 
   const onSubmittingPeep = async (peep) => {
-  
+    setIsLoading(true)
     await fetch('http://localhost:3001/peeps', {
         headers: { 'content-type': 'application/json' },
         method: "POST",
         body: JSON.stringify(peep)
       })
-    
-
+    setIsLoading(false)
     fetchAllPeeps(setPeeps)
     
   }
 
   const onSubmittingEdit = async (newContent) => {
+    setIsLoading(true)
     fetch(`http://localhost:3001/peep`, {
       headers: { 'content-type': 'application/json' },
       method: "PATCH",
       body: JSON.stringify(newContent)
     })
+    .then(()=> {setIsLoading(false)})
     .then(() => {fetchAllPeeps(setPeeps)})
     
   }
@@ -63,10 +66,14 @@ function App() {
   return ( 
     <BrowserRouter>
       <div className="App"> 
-        <Routes>     
-          <Route path='/main' element={<MainPage onSubmittingPeep={onSubmittingPeep} handleDeletePeep={handleDeletePeep} peeps={peeps} onSubmittingEdit={onSubmittingEdit}/>} />
-          <Route path='/profile' element={<Profile />} />         
-        </Routes>
+        <LoadingContext.Provider value={{isLoading, setIsLoading}}>
+          <div className="wrapper">
+            <Routes>            
+              <Route path='/main' element={<MainPage onSubmittingPeep={onSubmittingPeep} handleDeletePeep={handleDeletePeep} peeps={peeps} onSubmittingEdit={onSubmittingEdit}/>} />
+              <Route path='/profile' element={<Profile />} />                
+            </Routes>
+          </div>
+        </LoadingContext.Provider> 
       </div>    
     </BrowserRouter>
   );
