@@ -8,6 +8,22 @@
   left: 50%;
 }
 
+.form-field {
+  margin: 5%;
+}
+
+.signup-wrapper {
+  padding-top: 10%;
+  margin: auto;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 200px;
+  justify-content: center;
+
+}
+
 .peeps-container {
   text-align: center;
   margin-left: 20px;

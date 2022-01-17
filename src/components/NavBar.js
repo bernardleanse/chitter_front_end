@@ -24,6 +24,7 @@ export default function NavBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Chitter
           </Typography>
+          <Button color="inherit">Sign Up</Button>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>

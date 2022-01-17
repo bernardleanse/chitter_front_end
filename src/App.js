@@ -4,6 +4,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import Profile from './components/Profile';
 import NavBar from './components/NavBar';
 import MainPage from './components/MainPage';
+import SignUpForm from './components/SignUpForm';
 export const LoadingContext = createContext()
 
 function App() {
@@ -15,7 +16,6 @@ function App() {
   const [peeps, setPeeps] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   
-
   const onSubmittingPeep = async (peep) => {
     setIsLoading(true)
     await fetch('http://localhost:3001/peeps', {
@@ -68,12 +68,11 @@ function App() {
       <div className="App"> 
         <LoadingContext.Provider value={{isLoading, setIsLoading}}>
           <NavBar />
-          <div className="wrapper">
-            <Routes>            
+            <Routes>  
+              <Route path="/signup" element={<SignUpForm />} />          
               <Route path='/main' element={<MainPage onSubmittingPeep={onSubmittingPeep} handleDeletePeep={handleDeletePeep} peeps={peeps} onSubmittingEdit={onSubmittingEdit}/>} />
               <Route path='/profile' element={<Profile />} />                
             </Routes>
-          </div>
         </LoadingContext.Provider> 
       </div>    
     </BrowserRouter>
