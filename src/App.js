@@ -63,13 +63,25 @@ function App() {
     
   }
 
+  const sendSignUpDetailsToBackend = (details) => {
+    fetch('http://localhost:3001/signup', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify(details)
+    })
+    .then(res => {res.json()})
+    
+  }
+
   return ( 
     <BrowserRouter>
       <div className="App"> 
         <LoadingContext.Provider value={{isLoading, setIsLoading}}>
           <NavBar />
             <Routes>  
-              <Route path="/signup" element={<SignUpForm />} />          
+              <Route path="/signup" element={<SignUpForm sendSignUpDetailsToBackend={sendSignUpDetailsToBackend}/>} />          
               <Route path='/main' element={<MainPage onSubmittingPeep={onSubmittingPeep} handleDeletePeep={handleDeletePeep} peeps={peeps} onSubmittingEdit={onSubmittingEdit}/>} />
               <Route path='/profile' element={<Profile />} />                
             </Routes>

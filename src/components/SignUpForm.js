@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const SignUpForm = () => {
+const SignUpForm = ({sendSignUpDetailsToBackend}) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
@@ -8,7 +8,10 @@ const SignUpForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     const passwordsMatch = (password === passwordConfirmation)
-    
+    if(passwordsMatch) {
+      sendSignUpDetailsToBackend({username, password})
+    }
+
   }
 
   return (
