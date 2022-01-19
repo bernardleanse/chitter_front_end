@@ -11,7 +11,6 @@ const SignUpForm = ({sendSignUpDetailsToBackend}) => {
     if(passwordsMatch) {
       sendSignUpDetailsToBackend({username, password})
     }
-
   }
 
   return (
