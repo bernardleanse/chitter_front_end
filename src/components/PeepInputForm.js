@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { LoggedInUser } from '../App'
 
 const PeepInputForm = ({ onSubmittingPeep }) => {
   const [content, setContent] = useState('')
-
+  const { loggedInUser, setLoggedInUser } = useContext(LoggedInUser)
   const handleSubmit = (e) => {
     e.preventDefault()
-
-    onSubmittingPeep({ content })
+    const authorId = loggedInUser.id
+    onSubmittingPeep({ content, authorId })
     
     setContent('')
   }

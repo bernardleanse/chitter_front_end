@@ -1,20 +1,25 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import Profile from './components/Profile';
 import NavBar from './components/NavBar';
 import MainPage from './components/MainPage';
 import SignUpForm from './components/SignUpForm';
 export const LoadingContext = createContext()
+export const LoggedInUser = createContext()
+
 
 function App() {
+  const dummyUser = {id: 1, username: 'bernardleanse', password: 123}
 
   useEffect(() => {
     fetchAllPeeps(setPeeps)
+    setLoggedInUser(dummyUser)
   }, [])
 
   const [peeps, setPeeps] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [loggedInUser, setLoggedInUser] = useState({})
   
   const onSubmittingPeep = async (peep) => {
     setIsLoading(true)
@@ -75,9 +80,12 @@ function App() {
     
   }
 
+
+
   return ( 
     <BrowserRouter>
       <div className="App"> 
+        <LoggedInUser.Provider value={{loggedInUser, setLoggedInUser}}>
         <LoadingContext.Provider value={{isLoading, setIsLoading}}>
           <NavBar />
             <Routes>  
@@ -86,6 +94,7 @@ function App() {
               <Route path='/profile' element={<Profile />} />                
             </Routes>
         </LoadingContext.Provider> 
+        </LoggedInUser.Provider>
       </div>    
     </BrowserRouter>
   );
