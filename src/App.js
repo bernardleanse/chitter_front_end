@@ -8,7 +8,6 @@ import SignUpForm from './components/SignUpForm';
 export const LoadingContext = createContext()
 export const LoggedInUser = createContext()
 
-
 function App() {
   const dummyUser = {id: 1, username: 'bernardleanse', password: 123}
 
@@ -30,7 +29,6 @@ function App() {
       })
     setIsLoading(false)
     fetchAllPeeps(setPeeps)
-    
   }
 
   const onSubmittingEdit = async (newContent) => {
@@ -59,7 +57,6 @@ function App() {
     console.log(res)
   }
 
-
   const handleDeletePeep = (id) => {
     console.log('clicked')
     requestBackendDelete(id)
@@ -79,8 +76,6 @@ function App() {
     .then(res => {res.json()})
     
   }
-
-
 
   return ( 
     <BrowserRouter>
