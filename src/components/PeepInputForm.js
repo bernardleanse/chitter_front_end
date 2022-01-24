@@ -8,7 +8,6 @@ const PeepInputForm = ({ onSubmittingPeep }) => {
     e.preventDefault()
     const authorId = loggedInUser.id
     onSubmittingPeep({ content, authorId })
-    
     setContent('')
   }
 
