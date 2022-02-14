@@ -39,8 +39,7 @@ function App() {
       body: JSON.stringify(newContent)
     })
     .then(()=> {setIsLoading(false)})
-    .then(() => {fetchAllPeeps(setPeeps)})
-    
+    .then(() => {fetchAllPeeps(setPeeps)}) 
   }
 
   const fetchAllPeeps = async (callback) => {
@@ -61,8 +60,7 @@ function App() {
     console.log('clicked')
     requestBackendDelete(id)
     const newPeeps = peeps.filter((peep) => peep.id !== id)
-    setPeeps(newPeeps)
-    
+    setPeeps(newPeeps) 
   }
 
   const sendSignUpDetailsToBackend = (details) => {
@@ -73,8 +71,8 @@ function App() {
       method: 'POST',
       body: JSON.stringify(details)
     })
-    .then(res => {res.json()})
-    
+    .then(res => res.json())
+    // .then(data => console.log(`data is ${data}`))
   }
 
   return ( 
