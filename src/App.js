@@ -64,6 +64,7 @@ function App() {
   }
 
   const sendSignUpDetailsToBackend = (details) => {
+    setIsLoading(true)
     fetch('http://localhost:3001/signup', {
       headers: {
         'Content-Type': 'application/json'
@@ -71,8 +72,12 @@ function App() {
       method: 'POST',
       body: JSON.stringify(details)
     })
-    .then(res => res.json())
-    // .then(data => console.log(`data is ${data}`))
+    .then((res) => {
+      console.log(`server has responded with status ${res.status}`)
+      setIsLoading(false)
+    })
+    
+    
   }
 
   return ( 
