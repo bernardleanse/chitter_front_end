@@ -1,6 +1,10 @@
-import React, { useState } from 'react'
+import { CircularProgress } from '@mui/material'
+import React, { useContext, useState } from 'react'
+import { LoadingContext } from '../App'
+
 
 const SignUpForm = ({sendSignUpDetailsToBackend}) => {
+  const {isLoading} = useContext(LoadingContext)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
@@ -15,6 +19,7 @@ const SignUpForm = ({sendSignUpDetailsToBackend}) => {
 
   return (
     <div className="signup-wrapper">
+      {isLoading ? <div className="circular-progress"><CircularProgress /></div> :
       <form onSubmit={handleSubmit}>
         <label>
           Username
@@ -30,7 +35,7 @@ const SignUpForm = ({sendSignUpDetailsToBackend}) => {
           <input className='form-field' type='password' onChange={e => setPasswordConfirmation(e.target.value)} />
         </label>
         <input type='submit' value='Sign Up' />
-      </form>
+      </form> }
     </div>
   )
 }
